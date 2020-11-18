@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num = 1;
+
+        //开启一个定时器，每隔一段时间调用一次
+        // setInterval(function(){
+        //     console.log(num++);
+        // },3000)
+
+        //延时调用
+        /*
+            延时调用一个函数，不马上执行，而是等一段再执行，而且只会执行一次
+        */
+        var timer=setTimeout(function(){
+            console.log(num++);
+        },3000);
+
+        //使用这个函数关闭一个延时调用
+        clearTimeout(timer);
+
+        /*
+            延时调用和定时调用实际上可以互相代替，在开发中根据自己的需要去选择
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

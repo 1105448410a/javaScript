@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+        #sol{
+            width: 0;
+            height: 1000px;
+            border-left: 1px black solid;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var box1 = document.getElementById("box1");
+
+            var timer;
+
+            
+
+            btn01.onclick = function(){
+
+                move(box1,800,10);
+                
+            }
+
+            btn02.onclick = function(){
+
+                move(box1,0,10);
+
+            }
+
+
+
+            /*
+                一个移动的函数
+                    参数：
+                        1.移动的对象
+                        2.执行动画的目标位置
+                        3.移动的速度，整数向右移动，负数向左移动
+            */
+
+            function move(obj,target,speed){
+
+                var current = parseInt(getStyle(obj,"left"));
+
+                if(current > target){
+                    speed = -speed;
+                }
+
+                clearInterval(timer);
+
+                timer=setInterval(function(){
+
+                var old = parseInt(getStyle(obj,"left"));
+
+                var k = old + speed;
+
+                //判断k是否大于等于800
+
+                if((speed<0 && k<=target) || (speed>0 && k>=target)){
+                    k = target;
+                }
+
+                obj.style.left=k+"px";
+
+                //当移动到某一位置，关闭定时器，停止移动
+                if(k == target){
+                    clearInterval(timer);
+                }
+
+                },10);
+            }
+
+
+
+            function getStyle(obj,name){
+                if(window.getComputedStyle){
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">bo1向右移动</button>
+    <button id="btn02">bo1向左移动</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="sol"></div>
+</body>
+</html>

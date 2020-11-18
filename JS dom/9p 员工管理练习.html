@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            
+            /*
+                点击超链接以后，删除员工的一个信息
+            */
+            //获取所有的a标签
+            var ALLa = document.getElementsByTagName("a");
+            //为每个超链接绑定一个函数
+            for(var i=0;i<ALLa.length;i++){
+                //点击a标签以后，a会跳转页面，这是默认行为
+                //不需要跳转时，取消行为，通过响应函数最后，return false取消默认行为
+
+                ALLa[i].onclick = function(){
+                    //点击以后，删除超链接所在的那一行
+                    //此时的this 就是当时点击的a
+                    var tr = this.parentNode.parentNode;
+                   
+                   var name = tr.getElementsByTagName("td")[0].innerHTML;
+                    //删除之前，删除提示框
+                    /*
+                        confirm用于弹出一个带确认和取消的按钮提示框
+                        需要一个字符串作为参数，该字符串将会作为提示文字显示出来,确认true，取消false
+                    */
+                    var s=confirm("确认删除"+name+"吗？");
+
+                    if(s){
+                        tr.parentNode.removeChild(tr);
+                    }else{
+                    }
+                    return false;
+                }   
+            }
+
+
+            /*
+                点击sub按钮以后，将表单三个信息整合，添加为一个员工
+            */
+            var Sub = document.getElementById("addEmpButton");
+            Sub.onclick = function(){
+                //获取新员工姓名
+                var name = document.getElementById("empName").value;
+                //email
+                var email = document.getElementById("email").value;
+                //工资
+                var salary = document.getElementById("salary").value;
+
+                //创建一个tr
+                var tr = document.createElement("tr");
+
+                //创建四个td
+                var td01 = document.createElement("td");
+                var td02 = document.createElement("td");
+                var td03 = document.createElement("td");
+                var td04 = document.createElement("td");
+
+                //创建一个a标签
+                var a = document.createElement("a");
+
+                //创建文本节点
+                var name_ = document.createTextNode(name);
+                var email_ = document.createTextNode(email);
+                var salary_ = document.createTextNode(salary);
+                var delet_ = document.createTextNode("Delete");
+
+                td01.append(name_);
+                td02.append(email_);
+                td03.append(salary_);
+                a.append(delet_);
+                td04.append(a);
+                a.href="";
+
+                tr.appendChild(td01);
+                tr.appendChild(td02);
+                tr.appendChild(td03);
+                tr.appendChild(td04);
+                
+
+                var table = document.getElementById("emploryeeTable");
+                var tbody = table.getElementsByTagName("tbody")[0];
+                alert(tr.innerHTML);
+                
+                tbody.appendChild(tr);
+                alert(tbody.innerHTML);
+            }
+
+            
+
+
+
+        }
+    </script>
+    <style>
+
+        #emploryeeTable{
+            border: 3px black solid;
+        }
+    </style>
+</head>
+<body>
+
+        <table id="emploryeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>Tom</td>
+                <td>Tom@qq.com</td>
+                <td>5000</td>
+                <td><a href="">Delete</a></td>    
+            </tr>
+            <tr>
+                <td>Jerry</td>
+                <td>Jerry@qq.con</td>
+                <td>8000</td>
+                <td><a href="">Delete</a></td> 
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>Bob@qq.con</td>
+                <td>10000</td>
+                <td><a href="">Delete</a></td> 
+            </tr>
+        </table>
+
+     
+      
+            <h4>添加新员工</h4>
+            <span>Name:</span>
+            <input type="text" name="empName" id="empName">
+            <p></p>
+            <span>Email:</span>
+            <input type="text" name="email" id="email">
+            <p></p>
+            <span>Salary:</span>
+            <input type="text" name="salary" id="salary">
+            <p></p>
+            <button id="addEmpButton" value="abc">Sub</button>
+
+
+
+</body>
+</html>

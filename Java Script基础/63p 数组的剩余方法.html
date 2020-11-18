@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+         var arr =["孙悟空","猪八戒","沙和尚","唐僧"];
+         var arr2 =["孙悟空","猪八戒","沙和尚","唐僧"];
+         var arr3 =["孙悟空","猪八戒","沙和尚","唐僧"];
+         /*
+            concat()可以连接两个或更多数组，并将新的数组返回
+         */
+
+        arr=arr.concat(arr2,arr3);
+
+        alert(arr);
+
+        /*
+            join()可以将一个数组转换为一个字符串
+            可以指定一个字符串作为参数，此字符串将作为数组中元素的连接符
+        */
+
+        var rel = arr.join("hello");
+        alert(rel);
+        alert(typeof rel);
+
+        /*
+            reverse()可以反转数组，改变数组中的元素排序方式
+            直接作用于原数组
+        */
+        arr.reverse();
+        alert(arr);
+
+        /*
+            sort()
+                用于对数组中的元素排序
+                直接作用于原数组
+                默认按照Unicode编码进行排序
+
+                我们可以在sort()中添加一个回调函数，来指定排序规则
+                    回调函数需要定义两个形参，浏览器将会分别使用数组中的元素作为实参去调用回调函数
+                浏览器将根据回调函数的返回值来决定元素的顺序
+                    返回一个大于0的值，元素会交换位置
+                    返回一个小于0的值，元素位置不变
+                    返回一个0，默认为两个元素想等
+                        -所以
+                            升序排列 a-b
+                            降序排列 b-a
+
+        */
+        arr =["a","d","e","c","b"];
+        arr.sort();
+        alert(arr);
+
+        arr3 =[6,8,99,11,54,4];
+        arr3.sort(function(a,b){
+            return (a-b);
+        })
+        console.log(arr3);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

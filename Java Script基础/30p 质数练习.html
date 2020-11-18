@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var b = +prompt("请输入一个大于一的整数:");
+
+        if(b<=1){
+            alert("该数不符合规则")
+        }else{
+            for(var i=2;i<b;i++){
+            if(b%i==0){
+                alert("不是质数");
+                continue;
+            }
+            if(i==b-1){
+                alert("是质数");
+                continue;
+            }
+        }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

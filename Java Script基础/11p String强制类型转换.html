@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            转换方式
+                1.调用被转换数据类型的toString()方法 
+                    该方法不会影响原变量 会将转换的结果返回
+                    null和undefined没有toString()方法
+
+                2.调用String()函数 并将被转换的数据作为参数传递给函数
+                    使用String()函数
+                    对于number和boolean实际上与toString()一样
+                    对于null和undefined是直接将null转换成"null"
+        */
+
+        /*方式一*/
+        var a = 123456;
+        var b =a.toString();
+        console.log(typeof a);
+        console.log(typeof b);
+
+        /*方式二*/
+        a=123;
+        a=String(a);
+        console.log(typeof a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

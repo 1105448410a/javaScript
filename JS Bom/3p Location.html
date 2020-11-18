@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+        window.onload = function(){
+            /*
+                Location
+                    -该对象中封装了浏览器地址栏的对象信息
+            */
+            var btn = document.getElementsByTagName("button");
+            
+            btn[0].onclick = function(){
+                //如果直接打印location,则可以获取到地址栏的信息（当前页面完整路径）
+                //alert(location);
+
+                //如果修改loaction 会自动跳转到修改的路径
+                //并且会生成响应的历史记录
+
+                location = "https://www.baidu.com/";
+            }
+
+
+            btn[1].onclick = function(){
+                /*
+                    assign()
+                        -用来跳转其他页面，和直接修改location类似
+                */
+
+                location.assign("https://www.baidu.com/")
+                
+            }
+
+            btn[2].onclick = function(){
+                /*
+                   reload()
+                       -刷新，重新加载当前页面
+                       -如果在方法中传递一个true作为参数，则会强制刷新缓存 chrome中则是默认行为
+                */
+
+                location.reload();
+                
+            }
+            
+            btn[3].onclick = function(){
+                /*
+                    replace()
+                        -使用一个文档替换当前文档
+                        -与assign相似，但是不同的是不会留下历史记录
+                */
+                location.replace("test02.html");
+                
+            }
+    
+    
+
+        }
+    </script>
+</head>
+<body>
+    <button>修改location跳转</button>
+    <button>assign跳转</button>
+    <button>reload刷新</button>
+    <button>repalce替换文档</button>
+    <input type="text" name="" id="">
+</body>
+</html>

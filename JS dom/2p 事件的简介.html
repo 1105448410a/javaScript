@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            事件
+            就是文档或浏览器窗口中发生的一些特定的交互瞬间
+
+            Java Scriot 与 HTML 之间的交互是通过事件实现的
+
+            对于WEB应用来说，有下面这些代表性的事件，点击某个元素，将鼠标移动至某个元素上方，按下键盘上某个键等等
+        */
+    </script>
+</head>
+<body>
+    <!-- 此时点击按钮就是一个事件 -->
+    <button id="btn1" onclick="alert('讨厌你点我干嘛')">我是一个按钮</button>
+    <!--
+        我们可以在时间对应的属性值设置一些JS代码
+        当事件被触发时，这些代码会执行
+
+        在W3S手册中 DOM Event中可以查看所有事件
+    -->
+    <button id="btn">我是一个按钮</button>
+    <!-- 
+        上方的写法我们成为结构耦合
+        不方便维护，不推荐使用
+    -->
+
+    <script>
+        /*
+            我们可以给按钮的对应事件绑定处理函数的形式来响应事件
+
+            这样当事件被触发时，其对应的函数将会被执行
+        */
+        //获取按钮对象
+        var btn =document.getElementById("btn");
+
+        //绑定一个单击事件
+        //像这种为单击事件绑定的函数，成为单击相应函数
+        btn.onmousemove = function(){
+            alert("不要点我");
+        }
+
+    </script>
+</body>
+</html>

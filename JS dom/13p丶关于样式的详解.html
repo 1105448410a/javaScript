@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var btn01 = document.getElementById("btn01")
+            btn01.onclick = function(){
+                console.log("可见高度:count和padding");
+                console.log("绿色框div的可见高度:"+box1.clientHeight+"可见高度:"+box1.clientWidth);
+                console.log("蓝色框div的可见高度:"+box2.clientHeight+"可见高度:"+box2.clientWidth)
+            }
+            var btn02 = document.getElementById("btn02")
+            btn02.onclick = function(){
+                console.log("全部高度: cuntunt,padding,border");
+                console.log("绿色框div的全部高度:"+box1.offsetHeight+"可见高度:"+box1.offsetWidth);
+                console.log("蓝色框div的全部高度:"+box2.offsetHeight+"可见高度:"+box2.offsetWidth)
+            }
+            var btn03 = document.getElementById("btn03")
+            btn03.onclick = function(){
+                console.log("当前元素相当于其定位元素的偏移量");
+                console.log("绿色框div的水平偏移量:"+box1.offsetLeft+"垂直偏移量:"+box1.offsetTop);
+                console.log("蓝色框div的水平偏移量:"+box2.offsetLeft+"垂直偏移量:"+box2.offsetTop)
+            }
+            var btn04 = document.getElementById("btn04")
+            btn04.onclick = function(){
+                console.log("元素总可滚动长度");
+                console.log("绿色框div的X轴可滚动长度:"+box1.scrollHeight+"Y轴可滚动长度:"+box1.scrollWidth);
+                console.log("蓝色色框div的X轴可滚动长度:"+box2.scrollHeight+"Y轴可滚动长度:"+box2.scrollWidth)
+            }
+            var btn05 = document.getElementById("btn05")
+            btn05.onclick = function(){
+                console.log("元素已经滚动的长度");
+                console.log("绿色框div的X轴已滚动长度:"+box1.scrollTop+"Y轴已滚动长度:"+box1.scrollLeft);
+                console.log("蓝色框div的X轴已经滚动长度:"+box2.scrollTop+"Y轴已经滚动长度:"+box2.scrollLeft)
+            }
+        }
+    </script>
+    <style>
+        #box1{
+            width: 400px;
+            height: 400px;
+            border: 5px springgreen solid;
+            position: relative;
+            top: 50px;
+            left: 500px;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;    
+            border: 5px skyblue solid;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            overflow:auto;
+        }
+        button{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <button id="btn01">获取元素可见高度，宽度(clientHeight,clientWidth)</button>
+            <button id="btn02">获取元素可见高度，宽度( offsetHeight，offsetWidth</button>
+            <button id="btn03">获取元素相当于其父元素的偏移量(offsetTop，offsetLeft)</button>
+            <button id="btn04">获取元素整个可滚动区域的长度(scrollHeight
+            scrollWidth)</button>
+            <button id="btn05">获取元素相当于其父元素的偏移量(offsetTop，offsetLeft)</button>
+        </div>
+    </div>
+</body>
+</html>

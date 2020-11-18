@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 520px;
+            height: 333px;
+            padding: 10px 0;
+            background-color: red;
+            margin: 70px auto;
+            position: relative;
+        }
+        #imgList{
+            position: absolute;
+            list-style: none;
+            left: 0px;
+        }
+        #imgList li{
+           float: left;
+           margin: 0 10px;
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 20px;
+        }
+        #navDiv a{
+           float: left;
+           width: 15px;
+            height: 15px;
+           background-color: red;
+           margin: 0 10px;
+           opacity: 0.7;
+        }
+        #navDiv a:hover{
+            background-color: black;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /*图片列表宽度设置*/
+            var img = document.getElementsByTagName("img");
+
+            var imgList = document.getElementById("imgList");
+
+            imgList.style.width = 520*img.length + "px";
+            
+            /*将所有a标签居中*/
+            var nav = document.getElementById("navDiv");
+
+            var out = document.getElementById("outer");
+
+            nav.style.left = (out.offsetWidth-nav.offsetWidth)/2 + "px";
+
+            
+            /*获取所有的a*/
+            var index = 0;
+            var allA = document.getElementsByTagName("a");
+            allA[index].style.backgroundColor = "black";
+            for(var i =0;i<allA.length;i++){
+                allA[i].number = i;
+
+                allA[i].onclick = function(){
+                    
+                    //关闭自动切换定时器    
+                    clearInterval(timer);
+                    
+                    index = this.number;
+                    setA();
+                    move(imgList,"left",-520*index,20,function(){
+                        autoChange();
+                    });
+                }
+            }
+
+            autoChange();
+            var timer;
+
+            //创建一个函数，用来开启自动切换图片
+            function autoChange(){
+                //开启一个定时器
+
+                timer=setInterval(function(){
+                    //使索引自增
+                    index++;
+
+                    //判断index的值
+                    index%=img.length;
+
+                    //执行动画，切换图片
+                    move(imgList,"left",-520*index,20,function(){
+                        setA();
+                    });
+
+                },2000);
+            }
+
+
+
+            function setA(){
+                //判断当前索引是否是最后一张图片
+                if(index>=img.length-1){
+                    index = 0;
+                    //此时显示的是最后一张图片，但和第一张一样
+                    //此时通过CSS将最后一只切换成第一张
+                    imgList.style.left = 0+"px";
+                }
+                for(var i =0;i<allA.length;i++){
+                    allA[i].style.backgroundColor = "";
+                    allA[index].style.backgroundColor = "black";
+                }
+            }
+
+            function move(obj,attr,target,speed,callback){
+                //关闭上一个定时器
+                clearInterval(obj.timer);
+                //获取当前对象的需求属性
+                var current = parseInt(getStyle(obj,attr));
+                //如果目标在当前对象左边，则将速度变为负数，反方向移动
+                if(current > target){
+                    speed = -speed;
+                }
+
+                obj.timer = setInterval(function(){
+                    var oldV =parseInt(getStyle(obj,attr));
+                    var newV = oldV + speed;
+
+                    //判断k是否大于等于目标
+                    if((speed < 0 && newV<target) || ( speed > 0 && newV > target)){
+                        newV = target;
+                    }
+                    obj.style[attr] = newV+"px";
+
+                    //当移动到某一位置，关闭定时器，停止移动
+                    if(newV == target){
+                        clearInterval(obj.timer);
+                        //动画执行完毕
+                        callback();
+                    }
+                },30);
+            }
+
+
+
+
+            function getStyle(obj,name){
+                if(window.getComputedStyle){
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+        }
+          
+    </script>
+</head>
+<body>
+    <!-- 创建一个外部div 所有内容都在其中 -->
+    <div id="outer">
+        <ul id="imgList">
+            <li>
+                <img src="./图片/1.jpg" alt="" style="width: 500px;height: 333px;">
+            </li>
+            <li>
+                <img src="./图片/2.jpg" alt="" style="width: 500px;height: 333px;">
+            </li>
+            <li>
+                <img src="./图片/3.jpg" alt="" style="width: 500px;height: 333px;">
+            </li>
+            <li>
+                <img src="./图片/4.jpg" alt="" style="width: 500px;height: 333px;">
+            </li>
+            <li>
+                <img src="./图片/5.jpg" alt="" style="width: 500px;height: 333px;"> 
+            </li>
+            <li>
+                <img src="./图片/1.jpg" alt="" style="width: 500px;height: 333px;">
+            </li>
+        </ul>
+        <!-- 创建导航按钮 -->
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

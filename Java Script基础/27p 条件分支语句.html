@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            switch
+                语法switch(条件表达式){
+                    case 表达式:
+                        语句...语句
+                        break;
+                    case 表达式:
+                        语句...语句
+                        break;
+                }
+        */
+
+        var a = +prompt("请输入1到100中任意一个值");
+        switch(parseInt(a/10)){
+            case 0:
+            case 1:
+            case 2:            
+            case 3:              
+            case 4:          
+            case 5:
+                alert("不合格");
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                alert("合格");
+                break;
+            default:
+                alert("非法数字");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

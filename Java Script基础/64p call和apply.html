@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fun(a,b){
+            alert(this.name);
+            console.log(a+b);
+        }
+
+
+        /*
+            call()和apply()
+                -这两个方法是函数对象的方法，需要通过函数对象调用
+
+                当对函数调用这两个函数时，都会调用函数执行
+
+                调用call和apply时，可以将一个对象指定为第一个参数,此时这个对象将成为函数执行时的this
+
+                call方法可以将实参在对象之后依次传递
+
+                this情况：
+                    1.以函数情况调用时，this永远是window
+                    2.以方法强开调用时，this是调用方法的对象
+                    3.以构造函数形式调用时，this是新创建的对象
+                    4.使用call和apply时，this是指定的对象
+        */
+
+        var obj={name:"546"};
+
+        fun.call(obj,2,3);
+
+        fun.apply(obj,[2,3]);
+
+        fun();
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

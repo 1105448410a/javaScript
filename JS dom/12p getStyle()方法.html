@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            //点击按钮以后读取Box1的样式
+            var box1  = document.getElementById("box1");
+
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                alert(getStyle(box1,"width"));
+            }
+
+            //定义一个元素，用于获取指定元素的当前样式
+            //obj 元素  name  样式名
+            function getStyle(obj,name){
+
+                if(window.getComputedStyle){
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+        }
+    </script>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+
+        }
+    </style>
+</head>
+<body>
+    <button id="btn01">点我一</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+</body>
+</html>

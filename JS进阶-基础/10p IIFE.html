@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            1.理解
+                -全称：Immediately-Invoked Function Expression
+                        立即        调用     函数       表达式
+ 
+            2.作用
+        */
+
+        
+        //这样写报错
+        // function(){
+        //     console.log("报错了");
+        // }()
+
+
+        //但是如果括号括起来就可以
+        //匿名函数，自动调用
+        //其中a是局部变量，不影响外部全局空间
+        ( function(){
+            var a =6;
+            console.log("报错了");
+            console.log(a+3);
+        }())
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

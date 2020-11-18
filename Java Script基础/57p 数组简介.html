@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            三种对象
+                内建对象
+                宿主对象
+                自定义对象
+        */
+        /*
+            内建对象
+        */
+        /*
+                数组(Array)
+                    -数组也是一个对象
+                    -他和普通的对象功能类似，也是用于存储一些值的
+                    -不同的是普通对象使用字符串作为属性名，数组是使用数字作为索引操作元素
+                    -索引
+                        从0开始的整数就是索引
+                    -数组的存储性能要比普通对象更好，在开发中我们经常使用数组来存储数据
+        */
+
+        //创建数组对象
+        var arr = new Array();
+
+        //向数组中添加元素
+
+        arr[0]=1;
+        arr[1]=2;
+        arr[2]=3;
+        arr[3]=4;
+        arr[4]=5;
+        //如果读取不存在的索引，不会报错而是返回undefined
+        alert(arr);
+        alert(arr[2]);
+      
+
+        //获取数组的长度,使用length属性获得数组长度
+        alert(arr.length);
+
+        //向数组最后一个位置添加元素
+        arr[arr.length]=8;
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

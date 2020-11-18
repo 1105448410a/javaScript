@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            DOM  文档对象模型
+
+            D document 文档
+                -文档表示整个HTML网页文档
+            O Object   对象
+                -对象表示将网页中的每一个部分转换为了一个对象
+            M Model    模型
+                -使用模型来表示对象之间的关系，这样方便我们获取对象（具体可以看W3S DOM树）
+
+            JS中通过DoM对html文档进行操作，只要理解DOM就可以随心所欲操作WEB页面
+        */
+        /*
+            节点
+            Node 节点，是我们网页的最基本的组成部分，网页中的每一个部分都可以是一个节点
+           
+            比如html标签，属性，文本，注释。整个文档等都是一个节点
+
+            虽然都是节点。但具体不同，比如标签为元素节点，属性为属性节点，文本为文本节点，文档为文档节点
+
+            节点的类型不同，属性和方法也不尽相同
+        */
+
+    </script>
+</head>
+<body>
+    <button id="btn">我是一个按钮</button>
+    <script>
+        /*
+            浏览器已经为我们提供了文档节点对象，这个对象是window属性，可以在页面中直接使用，文档节点代表的是整个网页
+        */
+        console.log(document);
+
+        //获取button对象,通过getElementById(button对象的id)
+        var btn=document.getElementById("btn");
+        
+        //修改按钮的文字
+        //inner 内部的 html文档
+        btn.onclick = function(){
+            btn.innerHTML = "我是修改后的按钮";
+        }
+    </script>
+</body>
+</html>

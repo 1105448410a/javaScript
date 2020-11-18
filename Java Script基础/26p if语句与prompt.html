@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            流程控制语句
+                JS中程序从上到下一行一行执行
+
+                语句分类
+                    1 条件判断语句
+                    2 条件分支语句
+                    3 循环语句
+        */
+        /*
+            条件判断语句：
+                使用条件判断语句可以执行某个语句之前进行判断
+                    条件成立执行 不然不执行
+
+                if语句
+
+                if(条件表达式){
+                        语句;
+                }else if{
+                    语句;
+                }else if{
+                    语句;
+                }else if{
+                    语句;
+                }else{
+                    语句;
+                }
+
+                if语句在执行时 会先对条件表达式求值判断
+                为true则执行if后的语句 false不执行
+        */
+        // var a = 8 ;
+
+        // if(a > 9){
+        //     alert("你猜我出来吗");
+        // }else{
+        //     alert("我已经出来了");
+        // }
+
+        /*  prompt();可以弹出一个提示框 该提示框带有一个文本框 用户可以输入一段内容 该函数需要一个字符串作为参数
+
+            +prompt("一个随机数");可以直接将该函数返回值转换成Number 原理是 任何值与number相加都会转换成number
+
+
+            用户输入的内容作为函数的返回值返回string 可以定义一个变量来接受内容
+        */
+
+            /*----练习1----*/
+        // var a = prompt("请输入小明的期末成绩");
+
+        // if(a==100){
+        //     alert("给你一辆车");
+        // }else if(a>=80 && a<=99){
+        //     alert("给你两本书");
+        // }else if(a>=60 && a<80){
+        //     alert("给你一支笔");
+        // }else{
+        //     alert("啥都没有");
+        // }
+             /*----练习2----*/
+
+        var a1 = +prompt("一个随机数");
+        var a2 = +prompt("一个随机数");
+        var a3 = +prompt("一个随机数");
+        var b;
+        
+       if(a1>a2){
+            b=a2;
+            a2=a1;
+            a1=b;
+       }
+       if(a2>a3){
+            b=a3;
+            a3=a2;
+            a2=b;
+       }
+       if(a1>a2){
+            b=a2;
+            a2=a1;
+            a1=b;
+       }
+     
+        
+       
+        
+        alert("从小到大输出为"+a1+a2+a3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = new Object();
+
+        obj.name="张三";
+        obj.var=18;
+        /*
+            对象的属性名不强制要求标识符的规范
+                大部分的名字都可以使用
+                但是使用时尽量按照标识符的规范去做
+        */
+
+        /*
+            如果要是用特殊的属性名，不能采用.的方式报错，需要使用另一种方式
+                对象["属性名"] = 属性值;
+
+
+        */
+        obj["123"] = 789;
+
+        console.log(obj["123"]);
+
+        /*
+            JS对象的属性值 可以使任意的数据类型
+
+            也可以是对象
+        */
+        var obj2 = new Object();
+
+        obj2.name="张四";
+
+        obj.text = obj2;
+
+        console.log(obj);
+
+        /*
+            检查obj中是否有text属性
+        */
+        console.log("text" in obj);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

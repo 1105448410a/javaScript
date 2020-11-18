@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            break关键字可以用于退出switch或循环语句，会立即终止离他最近的那个循环语句
+        */
+        /*
+            想要控制break终止哪一个循环 可以通过
+            为循环语句创建一个label，标识循环
+
+            label:循环语句  如下
+        */
+
+        //label名字
+
+        hello:
+        for(var i=1;i<10;i++){
+            for(var j=1;j<=i;j++){
+                if(i==3){
+                    break hello;
+                }
+                document.write(i+"*"+j+"="+i*j+" ");
+            }
+            document.write("<br/>");
+        }
+
+
+        /*
+            continue关键字用于跳过当次循环
+        */
+        for(j=1;j<=10;j++){
+                if(j==3){
+                    continue;
+                }
+                document.write(j+"<br/>");
+            }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

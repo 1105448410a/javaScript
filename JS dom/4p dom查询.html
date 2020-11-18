@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+        /*
+          定义一个函数，专门制定元素绑定单击响应函数
+            参数：
+              idStr   绑定单级响应函数的ID属性值
+              fun     单击元素时，该函数将会被触发
+
+
+        */
+      function myClick(idStr,fun){
+        var btn =document.getElementById(idStr);
+        btn.onclick=fun;
+      }
+
+       /*
+          获取全局节点
+
+            以下方法均通过document对象调用
+
+            获取元素节点
+            getElementById()
+                -通过ID属性获取一个元素节点对象
+
+            getElementsByTagName()
+                -通过标签名获取一组元素节点对象
+
+            getElementsByName()
+                -通过name属性获取一组元素节点对象
+        */
+
+
+        /*
+          获取子节点
+
+            以下方法通过具体的元素节点调用
+
+            getElementsByTagName()
+              -方法，返回当前节点的指定标签名后代节点
+
+            childNodes
+              -属性，表示当前节点的所有子节点
+
+            firstChild
+              -属性，表示当前节点的第一个子节点
+
+            lastChild
+              -属性，表示当前节点的最后一个子节点
+
+            children
+              -属性，表示当前元素的所有子元素
+        */
+
+        /*  
+          获取父节点和兄弟节点
+            通过具体的节点调用
+
+            parrentNode
+              -属性，表示当前节点的父节点
+
+            previousSibling
+              -属性，表示当前节点的前一个兄弟节点
+
+            nextSiling
+              -属性，表示当前节点的后一个兄弟节点
+        */
+
+        window.onload = function(){
+           
+
+            //---查找id为bj的节点---
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                var bj = document.getElementById("bj");
+                //innerHTML 通过这个属性可以获取到元素内部的html代码
+                alert(bj.innerHTML+bj);
+            }
+
+
+
+            //---查找所有的li节点---
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function(){
+                //通过标签名获取一组元素节点
+                var lis = document.getElementsByTagName("li")
+                //直接打印lis 会返回一个类数组对象（[object HTMLCollection]），所有超寻到的元素都会封装到类数组对象中
+                //即使查询到的元素只有一个，也会封装到数组中返回
+                //所以可以打印该类数组对象的长度
+                alert("共有"+lis.length+"个，遍历：");
+                for(var i=0;i<lis.length;i++){
+                    alert(lis[i].innerHTML);
+                }
+            }
+
+
+
+            //查询name属性为gender的节点
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function(){
+                //通过name为gender获取一组元素节点
+                var gens =document.getElementsByName("gender");
+                alert("共有"+gens.length+"个，遍历：");
+                for(var i=0;i<gens.length;i++){
+                      /*
+                        innerHTML用于获取元素内部html代码，但是input是自结束标签，没有内部
+                        所以对于自结束标签没有意义
+                    */
+                    alert(gens[i].value);
+                    /*
+                        如果需要读取元素节点属性
+                        直接使用元素.属性
+
+                        但是class属性不能采用这种方式
+                    */
+                }
+            }
+
+
+
+            //---查找id为city下所有的li节点---
+            var btn04 = document.getElementById("btn04");
+            btn04.onclick = function(){
+                var city = document.getElementById("city");
+                var lis = city.getElementsByTagName("li")
+                //innerHTML 通过这个属性可以获取到元素内部的html代码
+                alert(lis.length);
+                for(var i=0;i<lis.length;i++){
+                  alert(lis[i].innerHTML);
+                }
+            }
+
+          //查找city下所有的子节点
+          var btn05 = document.getElementById("btn05");
+          btn05.onclick=function(){
+            var city = document.getElementById("city");
+
+            var nodes = city.childNodes;
+
+            //此时正常应该是4个li节点
+            //但是不是,childNodes会获取包括文本节点在内的所有节点，不仅仅只包括元素，此时ul与li之间,li与li之间的换行符，被理解成文本节点，也是子节点
+            //IE8以下的浏览器中，不会把换行符当做子节点，所以不会返回更多子节点
+            alert(nodes.length);
+
+            //children可以返回所有子元素
+
+            for(var i=0;i<nodes.length;i++){
+              alert(nodes[i].innerHTML);
+            }
+          }
+
+
+          //返回#phone的第一个子节点
+          var btn06 = document.getElementById("btn06");
+          btn06.onclick = function(){
+            var phone = document.getElementById("phone");
+
+            //此时获取的不是li,而是一个换行符
+            //所以是undifined
+            var first = phone.firstChild;
+
+            alert(first);
+
+            //所以要使用另一种方法
+            var first2 = phone.firstElementChild;
+
+            alert("另一种方法"+first2.innerHTML);
+          }
+
+
+
+          //返回bj的父节点
+          myClick("btn07",function(){
+            var bj = document.getElementById("bj");
+
+            var pn = bj.parentNode;
+              /*
+              innerTEXT
+                该属性可以获取到元素内部的文本内容
+
+            */
+            alert(pn.innerText);
+          });
+
+
+
+          //返回#IOS的前一个兄弟节点
+          myClick("btn08",function(){
+            var IOS = document.getElementById("IOS")
+
+            var last = IOS.previousSibling;
+
+          
+
+            alert(last.innerHTML);
+          });
+          
+
+          //返回#USERNAME的value属性值
+          myClick("btn09",function(){ 
+            var Username = document.getElementsByName("Username");
+            alert(Username[0].value);
+          });
+
+          //设置#USERNAME的value属性值
+          myClick("btn10",function(){
+            var Username = document.getElementsByName("Username");
+            var a=prompt("请输入想要设置的值");
+            Username[0].value=a;
+          });
+
+          //返回#bj的属性值
+          myClick("btn11",function(){
+            var bj = document.getElementById("bj");
+            var fc =bj.firstChild;
+            alert(fc.nodeValue);
+          });
+        }
+  </script>
+  <style>
+    ul{
+            list-style-type:none;
+            margin:0;
+            padding:0;
+    }
+    li{list-style: none;float: left;margin-left: 5px; border: 1px rgb(1, 1, 1,0.4) solid;background-color: greenyellow;}
+    #body-sum{width: 800px;height: 400px;margin: 0px auto;}
+    #body-left1{width: 60%;height: 300px;float: left;border: 1px black solid;box-sizing: border-box;padding: 30px;}
+    #body-left2{width: 60%;height: 100px;float: left;border: 1px black solid;box-sizing: border-box;padding: 25px;}
+    #body-right{width: 40%;height: 400px;float: right;}
+    .box1{overflow: hidden;}
+    .btn{width: 300px;margin: 0px auto;display: block;margin-top: 10px;}
+  </style>
+</head>
+<body>
+  <div id="body-sum">
+    <div id="body-left1">
+
+      <div class="box1" > 
+        <p>你喜欢的城市是：</p>
+        <ul id="city">
+          <li id="bj">北京</li>
+          <li>上海</li>
+          <li>东京</li>
+          <li>首尔</li>
+        </ul>
+      </div>
+
+     <div class="box1">
+      <p>你喜欢的游戏是：</p>
+      <ul>
+        <li>红警</li>
+        <li>魔兽</li>
+        <li>LOL</li>
+        <li>剑三</li>
+      </ul>
+     </div>
+     
+     <div class="box1">
+      <p>你喜欢的手机操作系统是：</p>
+      <ul id="phone">
+        <li>Andord</li><li id="IOS">IOS</li>
+        <li>WIndos</li>
+        <li>LINX</li>
+      </ul>
+     </div>
+    
+    </div>
+    
+    <div id="body-right">
+      <button class="btn" id="btn01">查找所有#bj节点</button>
+      <button class="btn" id="btn02">查找所有li节点</button>
+      <button class="btn" id="btn03">查找所有name="gender"节点</button>
+      <button class="btn" id="btn04">查找id="city"下所有li节点</button>
+      <button class="btn" id="btn05">返回id="city"下所有子节点</button>
+      <button class="btn" id="btn06">返回#phone的第一个子节点</button>
+      <button class="btn" id="btn07">返回#bj的父节点</button>
+      <button class="btn" id="btn08">返回#IOS的前一个兄弟节点</button>
+      <button class="btn" id="btn09">返回#USERNAME的value属性值</button>
+      <button class="btn" id="btn10">设置#USERNAME的value属性值</button>
+      <button class="btn" id="btn11">返回#bj的属性值</button>
+    </div>
+    <div id="body-left2">
+      <div>
+        <span>Gender:</span>
+        <input name="gender" type="radio" value="男" checked
+        class="gen"/><span>男</span>
+        <input name="gender" type="radio" value="女" class="gen"/><span>女</span>
+        <br>
+        <span>用户名:</span>
+        <input type="text" name="Username" value="请输入您的用户名">
+
+      </div>
+    
+
+    </div>
+  </div>
+</body>
+</html>

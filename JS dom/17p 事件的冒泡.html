@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: royalblue;
+        }
+        #s1{
+            background-color: sandybrown;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            /*
+                事件的冒泡 Bubble
+                    -所谓的冒泡，指的是事件向上传导，当后代元素事件被触发，祖先！相同的事件！也会被触发
+                    -在开发中，大部分冒泡都是有用的，如果不希望发生毛冒泡事件，可以通过事件对象来取消冒泡
+            */
+
+            //为s1绑定单击响应函数
+            var s1 = document.getElementById("s1");
+            s1.onclick = function(event){
+                //取消冒泡
+                //事件对象的cancelBubble设置为true，即可取消
+                event = event || window.event;
+                event.cancelBubble = true;
+                alert("我是span的单击响应函数");
+            }
+
+            //为box1绑定单击响应函数
+            var box1 = document.getElementById("box1");
+            box1.onclick = function(){
+                alert("我是div的单击响应函数");
+            }
+
+            //为body绑定单击响应函数
+            document.body.onclick = function(){
+                alert("我是body的单击响应函数");
+            }
+
+            /*
+                此时点击span，会触发三个单击响应函数
+            */
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        我是一个box1
+        <span id="s1">我是span</span>
+    </div>
+</body>
+</html>

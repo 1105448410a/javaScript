@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>    
+        /*
+            转换方式一
+                使用Number()函数
+                    字符串->数字
+                        1.如果是纯数字的字符串 直接转换为数字
+                        2.如果字符串中含有非数  字内容 则转换为NaN
+                        3.如果字符串是一个空串或全是空格的字符串 则转换为0
+                    
+                    布尔值->数字
+                        true 变为 1 
+                        false 变为 0
+
+                    NaN->数字
+                        0
+
+                    Undefined->数字
+                        NaN
+
+            转换方式二
+                专门用于转换字符串
+                使用parseInt() 把一个字符串转换为整数 
+                    可以将一个字符串中的有效整数内容取出来（从左往右每个字符挨个识别是否为整数，直到遇见不是整数的停止识别）
+                使用parseFloat() 把一个字符串转换成浮点数
+        */
+
+        /*方式一*/
+        var a ="123";
+        console.log(typeof a);
+        a=Number(a);
+        console.log(typeof a);
+
+        var b =true;
+        var c =false;
+        b=Number(b);
+        c=Number(c);
+        console.log(b);
+        console.log(c);
+
+        /*方式二*/
+        var q = "123px4564";
+        q = parseInt(a);
+        console.log(typeof q);
+        console.log(q);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

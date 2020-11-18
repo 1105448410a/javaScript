@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            /*
+                使图片可以自动切换
+            */
+            var img1 = document.getElementById("img1");
+            
+            var imgArr = ["./图片/1.jpg","./图片/2.jpg","./图片/3.jpg","./图片/4.jpg","./图片/5.jpg"];
+
+            //创建索引变量
+            var index = 0;
+
+            //定义一个变量，保存定时器标识
+            var timer;
+
+            /*
+                但是这样做，每点击一次按钮，就会开启一个定时器
+
+                点击多次，就会开启多个定时器，这样图片切换过快
+
+                并且我们只能关闭最后一个定时器
+            */
+            /*
+                所以在开启定时器之前，要关闭上一个定时器
+            */
+            //给开始按钮绑定点击响应函数
+            var star = document.getElementById("star");
+            star.onclick = function(){
+                clearInterval(timer);
+                timer = setInterval(function(){
+                //索引自增
+                index++;
+               
+                //判断索引是否大于数组长度
+                // if(index>=imgArr.length){
+                //     index=0;
+                // }
+                //这样写更方便，而且更简略
+                index = index % imgArr.length;
+
+
+                //修改图片
+                img1.src = imgArr[index];
+              
+                },500);
+            }
+
+
+
+            //为暂停按钮绑定点击响应函数
+            var stop = document.getElementById("stop");
+            stop.onclick = function(){
+                //单击按钮关闭定时器
+
+                /*
+                    clearInterval可以接受任何参数
+                        如果参数是定时器标识，则关闭定时器
+                        如果是别的，没用
+                */
+                clearInterval(timer);
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <img src="./图片/1.jpg" alt="" id="img1" style="width: 300px; height: 250px;">
+    <br>
+    <button id="star">开始</button>
+    <button id="stop">暂停</button>
+</body>
+</html>

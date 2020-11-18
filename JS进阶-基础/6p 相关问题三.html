@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //在JS调用函数时传递变量参数时，是值传递还是引用传递
+        /*
+            -都是值（一种是基本数据，一种是地址值）传递
+
+            -可能是值传递，也可能是引用传递（传对象，地址值）
+        */
+        var a =3;
+
+        function fn(a){
+            a=4;
+        }
+        
+        fn(a);
+
+        console.log(a);
+
+        function fn2(obj){
+            obj.name = "JJJ";
+        }
+        var obj = {name:"tom"};
+
+        fn2(obj);
+        console.log(obj);
+
+        //JS引擎如果进行管理内存
+        /*
+            1.内存声明周期 
+                -分配空间,得到使用权    :创建 var b
+                -存储数据,反复操作      :b = 3 , b = 4
+                -释放，小内存空间       :obj = null
+            2.释放内存
+                -局部变量：函数执行完自动释放
+                -对象：首先成为垃圾对象==>垃圾回收器回收
+        */
+
+        var b =3;
+        var obj = {};
+        obj = undefined;
+
+        function fn(){
+            var b ={};
+        }
+        fn();
+
+        //执行完fn后，b是自动释放的，b所指向的对象时在后面的某个时刻由垃圾回收器回收
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

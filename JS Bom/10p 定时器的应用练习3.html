@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: sandybrown;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+        #sol{
+            width: 0;
+            height: 1000px;
+            border-left: 1px black solid;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+
+            /*
+                目前定时器的标识，由全局变量timer保存，
+                所有执行的定时器都是Timer，所以开启别的box时，原本的定时器会关闭，导致之前的box移动停止
+            */
+            //var timer;
+
+            btn01.onclick = function(){
+
+                move(box1,"left",800,15);
+                
+            }
+
+            btn02.onclick = function(){
+
+                move(box1,"left",0,15);
+
+            }
+
+            btn03.onclick = function(){
+
+                move(box1,"top",800,10);
+
+            }
+
+
+
+
+
+            /*
+                一个移动的函数
+                    参数：
+                        1.移动的对象
+                        2.attr 移动对象的某个属性
+                        3.执行动画的目标位置
+                        4.移动的速度，整数向右移动，负数向左移动
+            */
+
+            function move(obj,attr,target,speed){
+
+                clearInterval(obj.timer);
+
+                var current = parseInt(getStyle(obj,attr));
+
+                if(current > target){
+                    speed = -speed;
+                }
+
+              
+
+                //向执行动画的对象中添加一个timer属性，保存定时器标识
+                obj.timer=setInterval(function(){
+
+                var oldV = parseInt(getStyle(obj,attr));
+
+                var newV = oldV + speed;
+
+                //判断k是否大于等于800
+
+                if((speed < 0 && newV<target) || ( speed > 0 && newV > target)){
+                    newV = target;
+                }
+
+                obj.style[attr] = newV+"px";
+
+                //当移动到某一位置，关闭定时器，停止移动
+                if(newV == target){
+                    clearInterval(obj.timer);
+                }
+
+                },30);
+            }
+
+
+
+            function getStyle(obj,name){
+                if(window.getComputedStyle){
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">box1向右移动</button>
+    <button id="btn02">box1向左移动</button>
+    <button id="btn03">box1向下移动</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="sol"></div>
+</body>
+</html>

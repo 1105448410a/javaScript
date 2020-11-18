@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            Math
+                -Math和其他的对象不同，它不是一个构造函数，它是一个工具类，里边封装了数学运算相关的属性和方法
+
+                -比如math.PI 表示圆周率
+
+                具体方法查看w3c离线手册
+        */
+
+        console.log(Math.PI);
+
+        var a =Math.abs(-9);
+
+        console.log(a);
+
+        /*
+            例如 
+            Math.ceil()
+            可以对一个数向上取整，小数位只要有值就自动进1
+
+            Math.floor()
+            向下取整，舍去小数部分
+
+            Math.round
+            四舍五入取整
+
+            Math.random()
+            随机生成一个0-1之间的随机数
+
+        */
+        a=Math.ceil(1.2);
+        console.log(a);
+
+        //生成一个0-10之间的随机数
+        a=Math.round(Math.random()*10);
+        console.log(a); 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

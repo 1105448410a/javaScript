@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            创建一个表达式检查字符串中是否含有 .
+            .在正则表达式中表示任意字符
+
+            在正则表达式中\作为转义字符
+            \.  表示.
+            \\  表示\
+        */  
+        var reg = /\./;
+
+        console.log(reg.test("avc.sd"));
+
+        /*
+            \w  
+                -表示任意字母，数字，下划线_
+            \W
+                -与w相反，除了字母数字下划线
+
+            \d
+                -任意数字
+            \D
+                -除了数字
+
+            \s
+                -空格
+            \S
+                -除了空格
+          
+            \b
+                -单词边界
+            \B
+                -除了单词边界
+        */
+
+        //创建一个正则表达式检查一个字符串中是否含有单词child
+
+        reg =/child/;
+
+        //其中的空格就是单词边界
+        console.log(reg.test("hello child ren"));
+
+        //去除字符串中的空格
+        //使用空串替换空格
+
+        var s1 = "          he  llo       ";
+
+        s1 = s1.replace(/^\s*|\s*$/g,"")
+
+        console.log(s1);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

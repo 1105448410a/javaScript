@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            创建一个构造函数
+        */
+
+        function MyClass(){
+            // this.name="张三";
+        }
+
+        //向MyClass的原型中添加一个name属性
+
+        MyClass.prototype.name="我是原型中的名字";
+
+        var mc = new MyClass();
+
+        //使用in检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回true
+        console.log("name" in mc);
+
+        //可以使用对象的hasOwnProperyt()来检查对象自身中是否含有该属性
+        console.log(mc.hasOwnProperty("name"));
+
+        //原型对象也是对象，所以它也有原型
+        //当我们在使用一个对象的属性或者方法时，会在自身中使用，如果没有回去原型中寻找。如果还没有，则会去原型中的原型去寻找，直到寻找到Object
+
+
+        alert(mc.name);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

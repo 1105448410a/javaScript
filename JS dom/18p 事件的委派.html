@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #u1{
+            background-color: #bfa;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+  
+            var u1 = document.getElementById("u1");
+            //点击按钮以后添加超链接
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                alert("你好");
+                var li = document.createElement("li");
+                li.innerHTML="<a href='javascript:;' class='link'>超链接新建</a>";
+
+                //将Li添加到ul中
+                u1.appendChild(li);
+            }
+
+            
+            /*
+                为每一个超链接都绑定一个单击响应函数
+                这里我们为每一个超链接都绑定了一个单击响应函数，但是这种操作十分麻烦
+
+                而且这种操作只能为已有的超链接设置事件，而新添加的超链接必须重新绑定
+            */
+            var allA = document.getElementsByTagName("a");
+            /*
+            for(var i =0;i<allA.length;i++){
+                allA[i].onclick = function(){
+                    alert("Sas")
+                }
+            }
+            */
+
+            //所以使用这种方法
+            /*
+                我们希望，只绑定一次事件，即可应用到多个元素事件，即使元素是后添加的
+
+                我们可以尝试将其绑定给其元素的共同祖先元素
+            */
+            //为ul绑定一个单击响应函数
+
+            u1.onclick = function(event){
+
+                //此时由于事件的冒泡，点击a标签也会触发ul的单击响应函数
+                //这就叫做事件的委派，将事件绑定给元素的祖先元素，这样当后代元素的事件被触发时，会一直冒泡到祖先元素
+                //事件委派利用了冒泡，通过委派可以减少事件绑定的次数，提高程序的性能
+
+                //当然，此时触发单击响应函数的位置不止a
+                //所以要判断是否点击的是a
+                event = event || window.event;
+                /*
+                    target 
+                        -事件对象的属性，返回触发事件的元素类型
+                */
+                if(event.target.className == "link"){
+                    alert("我是a的单击响应函数");
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">添加超链接</button>
+    <ul id="u1">
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接一</a></li>
+        
+    </ul>
+</body>
+</html>

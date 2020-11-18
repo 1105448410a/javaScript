@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            //获取body标签
+
+            var body1 = document.getElementsByTagName("body")[0];
+
+            
+            //在document中有一个属性Body,它保存的是body的引用
+            
+
+            var body2 = document.body;
+
+            console.log(body1);
+            console.log(body2);
+
+
+            //document.documentElement;保存的是html的根标签
+            var de = document.documentElement;
+
+            console.log(de);
+
+            //document.all;代表的是页面中的所有元素
+            //也可以写
+            //all =  document.getElementsByTagName("*")
+           
+            var all = document.all;
+
+            console.log(all);
+
+            /*
+                根据元素的class属性查询元素节点对象
+            */
+
+            var box1 = document.getElementsByClassName("box1")[0];
+
+
+            //获取页面中的所有div
+            var div = document.getElementsByTagName("div");
+
+            console.log(div.length);
+
+            //如果想要获得box1 中的div
+            /*
+                document.querySelector();
+                    -方法,需要一个选择期的字符串作为参数，可以根据一个CSS选择器来查询一个元素节点对象
+                    -使用该方法总会返回唯一一个元素，如果满足条件的元素有多个，只会返回第一个
+            */
+            var div_box1 = document.querySelector(".box1 div");
+
+            var box1 = document.querySelector(".box1");
+
+            console.log(box1);
+            console.log(div_box1);
+
+            /*
+                document.querySelectorAll()
+                    -该方法和querySelector()类似，不同的是会将符合的元素封装到数组中返回，而不是只返回第一个
+                    -即使符合条件的元素只有一个，也会返回数组
+            */
+            var div_box1_all = document.querySelectorAll(".box1 div")
+
+            console.log(div_box1_all.length);
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box1">
+        <div>我是Box1中的div</div>
+        <div>我是Box1中的div</div>
+    </div>
+    <div class="box2">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box3">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

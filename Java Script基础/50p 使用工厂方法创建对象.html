@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj1 ={
+            name:"孙悟空",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+
+        var obj2 ={
+            name:"猪八戒",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name)
+            }
+        };
+
+        var obj3 ={
+            name:"沙和尚",
+            age:18,
+            gender:"男",
+            sayName:function(){
+                alert(this.name);
+            }
+        };
+
+        //创建了三个对象，但是有大量的重复代码
+        //所以使用工厂方法创建对象,可以大批量创建对象
+
+        function creatPerson(name,age,gender){
+            //创建一个新对象
+            var obj = new Object();
+
+            obj.name=name;
+
+            obj.age=age;
+
+            obj.gender=gender;
+
+            obj.sayName=function(){
+                alert(this.name);
+            }
+
+            //将新的对象返回
+
+            return obj;
+        }
+
+        var obj2=creatPerson("啦啦啦",18,"男");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

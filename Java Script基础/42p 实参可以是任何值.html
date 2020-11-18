@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //一个函数 判断是不是偶数
+
+        function jiou(a){
+            return a % 2 ==0;
+        }
+
+        //一个函数 求圆面积
+
+        function mianji(r){
+            return r*r*3.14;
+        }
+
+        //一个函数 可以在控制台输出一个人的信息
+
+        function say(name,age,gender,address){
+            console.log("我是"+name+"，今年我"+age+"岁了，我是"+gender+"人,住在"+address+"里")
+        }
+
+        say("张三",18,"男","河南");
+
+        //但上方的方法较为麻烦，所以可以将一个对象作为参数传给函数
+        var obj ={
+            name:"孙悟空",
+            age:18,
+            gender:"男",
+            address:"河南"
+            };
+
+        function say2(o){
+            console.log("我是"+o.name+"，今年我"+o.age+"岁了，我是"+o.gender+"人,住在"+o.address+"里")
+        }
+
+        say2(obj);
+
+        /*
+            实参是一个对象，函数也是一个对象，所以函数的参数也可以函数
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

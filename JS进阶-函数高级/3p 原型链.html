@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /*
+            原型链
+            1.访问一个对象的属性时：
+                -先在自身属性中查找，找到返回
+                -如果没有，再沿着__proto__这条链向上查找，找到返回
+                -如果最终没有找到，返回undefined
+            2.别名：隐式原型链
+            3.作用：查找对象的属性方法
+
+        */
+
+        function fn(){
+            this.test1 = function(){
+                console.log("test1");
+            }
+
+            fn.prototype.test2 = function(){
+                console.log("test2");
+            }
+
+        }
+
+        var FN =new fn();
+
+        FN.test1();
+        FN.test2();
+        console.log(FN.toString())
+
+
+        /*
+            1.函数的显示原型指向的对象:默认时空object对象（但是object的显示原型不是，他的原型对象是Object的原型对象）
+        
+            2.所有函数都是Function的实例（包括他本身）
+
+            3.object的原型对象时原型链的尽头
+        */
+
+
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

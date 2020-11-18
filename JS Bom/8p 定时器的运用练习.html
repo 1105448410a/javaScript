@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+        #sol{
+            width: 0;
+            height: 1000px;
+            border-left: 1px black solid;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var box1 = document.getElementById("box1");
+
+            //点击按钮以后，box1向右移动
+            btn01.onclick = function(){
+                
+                var timer=setInterval(function(){
+
+                    var old = parseInt(getStyle(box1,"left"));
+
+                    var k = old +19;
+
+                    //判断k是否大于等于800
+
+                    if(k>800){
+                        k = 800;
+                    }
+                    
+                    box1.style.left=k+"px";
+
+                    //当移动到某一位置，关闭定时器，停止移动
+                    if(old >= 800){
+                        clearInterval(timer);
+                    }
+
+                },10);
+            }
+
+
+            function getStyle(obj,name){
+                if(window.getComputedStyle){
+                    return getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn01">bo1向右移动</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="sol"></div>
+</body>
+</html>
